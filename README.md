@@ -18,3 +18,9 @@ to set new github origin:
 ```
 $ git remote set-url origin <url-of-new-git-repo>
 ```
+
+## redux
+```
+$ npm i redux react-redux redux-thunk axios
+```
+
