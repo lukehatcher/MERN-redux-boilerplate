@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-
-import service1Reducer from './service1Reducer';
+import todosReducer from './todosReducer';
 
 const rootReducer = combineReducers({
   // Define a top-level state field named `todos`, handled by `service1Reducer`
-  todos: service1Reducer,
-})
+  todos: todosReducer,
+});
 
 export default rootReducer;
