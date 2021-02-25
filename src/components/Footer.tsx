@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
-const selectTodo = (state) => state.todos.map((todo) => todo.text);
+const selectTodo = (state): string[] => state.todos.map((todo) => todo.text);
 
-export default function Footer() {
+export const Footer: React.FC<any> = () => {
   // this footer uses the same state as the TodosList component BUT...
   // the parent App.jsx component does not rerender when this global todo state changes
   const todos = useSelector(selectTodo, shallowEqual);

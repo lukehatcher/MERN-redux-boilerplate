@@ -1,7 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const db = require('./database');
+// const express = require('express');
+// const morgan = require('morgan');
+// const path = require('path');
+// const db = require('./database');
+import * as express from 'express';
+import * as morgan from 'morgan';
+import * as path from 'path';
+import * as db from './database';
 
 const PORT = 3001 || process.env.PORT;
 const app = express();

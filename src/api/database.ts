@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
 mongoose.connect(
   'mongodb://localhost/MERN-redux-boilerplate',
@@ -43,7 +44,7 @@ const initNewUser = async (data) => {
 //     { id: 1, text: 'my todo2', completed: false }],
 // });
 
-const nextTodoId = (todos) => {
+export const nextTodoId = (todos: any[]): number => {
   // helper function to find next id
   let max = -Infinity;
   for (let i = 0; i < todos.length; i++) {
@@ -52,25 +53,31 @@ const nextTodoId = (todos) => {
   return max + 1;
 };
 
-const addTodo = async (userID, text) => {
-  const doc = await ReduxBPData.findOne({ userID });
-  const newTodoObj = { id: nextTodoId(doc.todos), text, completed: false };
-  doc.todos.push(newTodoObj);
-  await doc.save();
-  return newTodoObj; // NEED TO RETURN SO I CAN UPDATE STATE
+interface newTodoObj {
+  id: number,
+  text: string,
+  completed: boolean,
 };
 
-const fetchTodos = async (userID) => {
+export const addTodo = async (userID: string, text: string): Promise<newTodoObj> => {
+  const doc: any = await ReduxBPData.findOne({ userID });
+  const obj = { id: nextTodoId(doc.todos), text, completed: false };
+  doc.todos.push(obj);
+  await doc.save();
+  return obj; // NEED TO RETURN SO I CAN UPDATE STATE
+};
+
+export const fetchTodos = async (userID: any): Promise<any> => { // not actually any for the param
   try {
-    const doc = await ReduxBPData.findOne({ userID });
+    const doc: any = await ReduxBPData.findOne({ userID });
     return doc.todos;
   } catch (err) {
     console.error(err);
   }
 };
 
-module.exports = {
-  initNewUser,
-  addTodo,
-  fetchTodos,
-};
+// module.exports = {
+//   initNewUser,
+//   addTodo,
+//   fetchTodos,
+// };

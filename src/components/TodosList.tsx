@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
 // selector function
 // const selectTodoIds = (state) => state.todos.map((todo) => todo.id);
-const selectTodos = (state) => state.todos.map((todo) => todo.text);
+const selectTodos = (state): string[] => state.todos.map((todo) => todo.text);
 
-export default function TodosList() {
+export const TodosList: React.FC<any> = () => {
   // const todoIds = useSelector(selectTodoIds, shallowEqual);
   const todos = useSelector(selectTodos, shallowEqual);
 

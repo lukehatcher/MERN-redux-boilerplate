@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { saveNewTodo } from '../actions/todosActions';
 
 // import asyncThunkForTodoAddition from 'service1Thunk.js'
 
-export default function Form() {
+export const Form: React.FC<any> = () => {
   const [textInput, setTextInput] = useState('');
   const dispatch = useDispatch();
 
