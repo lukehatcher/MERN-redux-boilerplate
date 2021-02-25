@@ -7,7 +7,7 @@ import * as morgan from 'morgan';
 import * as path from 'path';
 import * as db from './database';
 
-const PORT = 3001 || process.env.PORT;
+const PORT = 3000 || process.env.PORT;
 const app = express();
 const PUB_DIR = path.resolve(__dirname, '..', '..', 'public');
 

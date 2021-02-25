@@ -20,12 +20,5 @@ $ git remote set-url origin <url-of-new-git-repo>
 ```
 
 ## redux
-```
-$ npm i redux react-redux redux-thunk axios
-```
-
-### TODO
-- loading spinner
-- .env file for database
-- auth
-- styled components
+typescript is handled with `npm run build` command
+redux demo'd by having state in both the footer and the todolist components update with no App.tsx re-render
