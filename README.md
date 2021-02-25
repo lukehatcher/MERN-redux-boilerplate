@@ -20,12 +20,4 @@ $ git remote set-url origin <url-of-new-git-repo>
 ```
 
 ## redux
-```
-$ npm i redux react-redux redux-thunk axios
-```
-
-### TODO
-- loading spinner
-- .env file for database
-- auth
-- styled components
+see branch `ts-master` for TypeScript version
