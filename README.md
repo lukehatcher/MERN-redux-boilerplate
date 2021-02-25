@@ -1,4 +1,6 @@
-# xERN stack boilerplate
+see original xERN non-redux boilerplate [here](https://github.com/lukehatcher/xERN-boilerplate) and see MERN-redux-boilerplate with typescript [here](https://github.com/lukehatcher/MERN-redux-boilerplate/tree/ts-master)
+
+# MERN-redux stack boilerplate
 - React/Express/Node boilerplate
 - no database boilerplate
 - webpack bundler
@@ -11,12 +13,12 @@ $ git clone https://github.com/lukehatcher/xERN-boilerplate.git
 ```
 rename cloned repo
 ```
-$  mv xERN-boilerplate <new-dir-name-here>
+$  mv MERN-redux-boilerplate <new-dir-name-here>
 $ cd <new-dir-name-here>
 ```
 to set new github origin:
 ```
-$ git remote set-url origin <url-of-new-git-repo>
+$ git remote set-url <url-of-new-git-repo>
 ```
 
 ## redux
