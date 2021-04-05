@@ -1,4 +1,4 @@
-see original xERN non-redux boilerplate [here](https://github.com/lukehatcher/xERN-boilerplate) and see MERN-redux-boilerplate with typescript [here](https://github.com/lukehatcher/MERN-redux-boilerplate/tree/ts-master)
+see original xERN (no redux or api) boilerplate [here](https://github.com/lukehatcher/xERN-boilerplate) and see MERN + redux TypeScript boilerplate [here](https://github.com/lukehatcher/MERN-redux-boilerplate/tree/ts-master)
 
 # MERN-redux stack boilerplate notes
 - front end bundled with webpack
