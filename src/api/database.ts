@@ -1,4 +1,4 @@
-// const mongoose = require('mongoose');
+
 import * as mongoose from 'mongoose';
 
 mongoose.connect(
@@ -38,6 +38,7 @@ const initNewUser = async (data) => {
   }
 };
 
+// example seeding of db
 // initNewUser({
 //   userID: 'luke',
 //   todos: [{ id: 0, text: 'my todo1', completed: false },
@@ -64,7 +65,7 @@ export const addTodo = async (userID: string, text: string): Promise<newTodoObj>
   const obj = { id: nextTodoId(doc.todos), text, completed: false };
   doc.todos.push(obj);
   await doc.save();
-  return obj; // NEED TO RETURN SO I CAN UPDATE STATE
+  return obj;
 };
 
 export const fetchTodos = async (userID: any): Promise<any> => { // not actually any for the param
@@ -75,9 +76,3 @@ export const fetchTodos = async (userID: any): Promise<any> => { // not actually
     console.error(err);
   }
 };
-
-// module.exports = {
-//   initNewUser,
-//   addTodo,
-//   fetchTodos,
-// };

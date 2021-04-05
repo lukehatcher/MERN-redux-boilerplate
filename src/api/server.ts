@@ -1,7 +1,3 @@
-// const express = require('express');
-// const morgan = require('morgan');
-// const path = require('path');
-// const db = require('./database');
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as path from 'path';
@@ -20,12 +16,12 @@ app.listen(PORT, () => {
 });
 
 app.get('/api/todos', (req, res) => {
-  const { userID } = req.query; // check
+  const { userID } = req.query;
   db.fetchTodos(userID)
     .then((todos) => res.send(todos))
     .catch((err) => {
       console.error(err, 'error fetching todos');
-      // res.sendStatus(400); // bad request code
+      res.sendStatus(400);
     });
 });
 
@@ -34,15 +30,9 @@ app.post('/api/todos', (req, res) => {
   switch (type) {
     case 'add':
       db.addTodo(userID, text)
-        // normally would res.sendStatus here, instead send added data to update state
         .then((response) => res.status(201).send(response)) // access via response.data on client
         .catch((err) => console.error(err, 'error posting new todo'));
       break;
-    // case 'init':
-    //   db.initNewUser(userID)
-    //     .then(() => res.sendStatus(201))
-    //     .catch((err) => console.error(err, 'error init user data'));
-    //   break;
     default:
       break;
   }
