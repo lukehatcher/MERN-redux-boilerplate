@@ -37,6 +37,7 @@ const initNewUser = async (data) => {
   }
 };
 
+// example seeding of db
 // initNewUser({
 //   userID: 'luke',
 //   todos: [{ id: 0, text: 'my todo1', completed: false },
@@ -57,7 +58,7 @@ const addTodo = async (userID, text) => {
   const newTodoObj = { id: nextTodoId(doc.todos), text, completed: false };
   doc.todos.push(newTodoObj);
   await doc.save();
-  return newTodoObj; // NEED TO RETURN SO I CAN UPDATE STATE
+  return newTodoObj;
 };
 
 const fetchTodos = async (userID) => {
