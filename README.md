@@ -1,13 +1,13 @@
 see original xERN non-redux boilerplate [here](https://github.com/lukehatcher/xERN-boilerplate) and see MERN-redux-boilerplate with typescript [here](https://github.com/lukehatcher/MERN-redux-boilerplate/tree/ts-master)
 
 # MERN-redux stack boilerplate
-- React/Express/Node boilerplate
-- no database boilerplate
-- webpack bundler
+- minimal api boilerplate
+- fe bundled with webpack 
 - async/await polyfills in App.jsx
 - no CSS setup at all (could use style-loader/css-loader || styled-comps)
+- fullstack app contains self explanatory form and view components 
 
-## how to clone and use
+## how to use
 ```
 $ git clone https://github.com/lukehatcher/xERN-boilerplate.git
 ```
@@ -21,5 +21,5 @@ to set new github origin:
 $ git remote set-url <url-of-new-git-repo>
 ```
 
-## redux
+## TypeScript
 see branch `ts-master` for TypeScript version
