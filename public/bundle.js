@@ -50741,9 +50741,38 @@ function symbolObservablePonyfill(root) {
 
 /***/ }),
 
-/***/ "./src/actions/todosActions.js":
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+var App_tsx_1 = __webpack_require__(/*! ./components/App.tsx */ "./src/components/App.tsx");
+// for async await polyfill
+// see https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md#babel
+__webpack_require__(/*! core-js/stable */ "./node_modules/core-js/stable/index.js");
+__webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js");
+var store_1 = __webpack_require__(/*! ./store */ "./src/store.ts");
+var todosActions_1 = __webpack_require__(/*! ./actions/todosActions */ "./src/actions/todosActions.ts");
+var userID = 'luke';
+store_1.default.dispatch(todosActions_1.fetchTodos(userID));
+ReactDOM.render(
+// eslint-disable-next-line react/jsx-filename-extension
+React.createElement(react_redux_1.Provider, { store: store_1.default },
+    React.createElement(App_tsx_1.App, null)), document.getElementById('root'));
+
+
+/***/ }),
+
+/***/ "./src/actions/todosActions.ts":
 /*!*************************************!*\
-  !*** ./src/actions/todosActions.js ***!
+  !*** ./src/actions/todosActions.ts ***!
   \*************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -50827,108 +50856,6 @@ exports.saveNewTodo = saveNewTodo;
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var App_1 = __webpack_require__(/*! ./components/App */ "./src/components/App.tsx");
-// for async await polyfill
-// see https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md#babel
-__webpack_require__(/*! core-js/stable */ "./node_modules/core-js/stable/index.js");
-__webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js");
-var store_1 = __webpack_require__(/*! ./store */ "./src/store.js");
-var todosActions_1 = __webpack_require__(/*! ./actions/todosActions */ "./src/actions/todosActions.js");
-var userID = 'luke';
-store_1.default.dispatch(todosActions_1.fetchTodos(userID));
-ReactDOM.render(
-// eslint-disable-next-line react/jsx-filename-extension
-React.createElement(react_redux_1.Provider, { store: store_1.default },
-    React.createElement(App_1.App, null)), document.getElementById('root'));
-
-
-/***/ }),
-
-/***/ "./src/reducers/rootReducer.js":
-/*!*************************************!*\
-  !*** ./src/reducers/rootReducer.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-var todosReducer_1 = __webpack_require__(/*! ./todosReducer */ "./src/reducers/todosReducer.js");
-var rootReducer = redux_1.combineReducers({
-    // Define a top-level state field named `todos`, handled by `service1Reducer`
-    todos: todosReducer_1.default,
-});
-exports.default = rootReducer;
-
-
-/***/ }),
-
-/***/ "./src/reducers/todosReducer.js":
-/*!**************************************!*\
-  !*** ./src/reducers/todosReducer.js ***!
-  \**************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var initialState = [];
-function todosReducer(state, action) {
-    if (state === void 0) { state = initialState; }
-    switch (action.type) {
-        case 'loadTodos':
-            return action.payload; // full array of objects
-        case 'addTodo':
-            return __spreadArrays(state, [action.payload]);
-        default:
-            return state;
-    }
-}
-exports.default = todosReducer;
-
-
-/***/ }),
-
-/***/ "./src/store.js":
-/*!**********************!*\
-  !*** ./src/store.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-var redux_thunk_1 = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
-var redux_devtools_extension_1 = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
-var rootReducer_1 = __webpack_require__(/*! ./reducers/rootReducer */ "./src/reducers/rootReducer.js");
-var composedEnhancer = redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default));
-var store = redux_1.createStore(rootReducer_1.default, composedEnhancer);
-exports.default = store;
-
-
-/***/ }),
-
 /***/ "./src/components/App.tsx":
 /*!********************************!*\
   !*** ./src/components/App.tsx ***!
@@ -50995,7 +50922,7 @@ exports.Form = void 0;
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var todosActions_1 = __webpack_require__(/*! ../actions/todosActions */ "./src/actions/todosActions.js");
+var todosActions_1 = __webpack_require__(/*! ../actions/todosActions */ "./src/actions/todosActions.ts");
 // import asyncThunkForTodoAddition from 'service1Thunk.js'
 var Form = function () {
     var _a = react_1.useState(''), textInput = _a[0], setTextInput = _a[1];
@@ -51041,6 +50968,79 @@ var TodosList = function () {
     return (React.createElement("div", null, todos.map(function (todo) { return React.createElement("div", { key: Math.random() }, todo); })));
 };
 exports.TodosList = TodosList;
+
+
+/***/ }),
+
+/***/ "./src/reducers/rootReducer.ts":
+/*!*************************************!*\
+  !*** ./src/reducers/rootReducer.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+var todosReducer_1 = __webpack_require__(/*! ./todosReducer */ "./src/reducers/todosReducer.ts");
+var rootReducer = redux_1.combineReducers({
+    // Define a top-level state field named `todos`, handled by `service1Reducer`
+    todos: todosReducer_1.default,
+});
+exports.default = rootReducer;
+
+
+/***/ }),
+
+/***/ "./src/reducers/todosReducer.ts":
+/*!**************************************!*\
+  !*** ./src/reducers/todosReducer.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var initialState = [];
+function todosReducer(state, action) {
+    if (state === void 0) { state = initialState; }
+    switch (action.type) {
+        case 'loadTodos':
+            return action.payload; // full array of objects
+        case 'addTodo':
+            return __spreadArrays(state, [action.payload]);
+        default:
+            return state;
+    }
+}
+exports.default = todosReducer;
+
+
+/***/ }),
+
+/***/ "./src/store.ts":
+/*!**********************!*\
+  !*** ./src/store.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+var redux_thunk_1 = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+var redux_devtools_extension_1 = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
+var rootReducer_1 = __webpack_require__(/*! ./reducers/rootReducer */ "./src/reducers/rootReducer.ts");
+var composedEnhancer = redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default));
+var store = redux_1.createStore(rootReducer_1.default, composedEnhancer);
+exports.default = store;
 
 
 /***/ })

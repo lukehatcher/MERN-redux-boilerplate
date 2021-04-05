@@ -1,11 +1,9 @@
-# xERN stack boilerplate
-- React/Express/Node boilerplate
+# TypeScript MERN-redux stack boilerplate
 - no database boilerplate
 - webpack bundler
-- async/await polyfills in App.jsx
 - no CSS setup at all (could use style-loader/css-loader || styled-comps)
 
-## how to clone and use
+## how to use
 ```
 $ git clone https://github.com/lukehatcher/xERN-boilerplate.git
 ```
@@ -21,4 +19,3 @@ $ git remote set-url origin <url-of-new-git-repo>
 
 ## redux
 typescript is handled with `npm run build` command
-redux demo'd by having state in both the footer and the todolist components update with no App.tsx re-render

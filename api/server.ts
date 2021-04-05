@@ -1,13 +1,11 @@
 import * as express from 'express';
 import * as morgan from 'morgan';
-import * as path from 'path';
 import * as db from './database';
 
 const PORT = 3000 || process.env.PORT;
 const app = express();
-const PUB_DIR = path.resolve(__dirname, '..', '..', 'public');
 
-app.use(express.static(PUB_DIR));
+app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.json()); // only needed for PUT/POST
 
