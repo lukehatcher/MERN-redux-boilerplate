@@ -1,7 +1,8 @@
 # TypeScript MERN-redux stack boilerplate
-- no database boilerplate
 - webpack bundler
 - no CSS setup at all (could use style-loader/css-loader || styled-comps)
+- minimal typing
+- minimal api boilerplate, no controllers or routes
 
 ## how to use
 ```
@@ -16,6 +17,3 @@ to set new github origin:
 ```
 $ git remote set-url origin <url-of-new-git-repo>
 ```
-
-## redux
-typescript is handled with `npm run build` command
