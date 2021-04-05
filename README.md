@@ -1,3 +1,5 @@
+see original xERN non-redux boilerplate [here](https://github.com/lukehatcher/xERN-boilerplate) and see MERN-redux-boilerplate with vanilla JavaScript [here](https://github.com/lukehatcher/MERN-redux-boilerplate/tree/master)
+
 # TypeScript MERN-redux stack boilerplate
 - webpack bundler
 - no CSS setup at all (could use style-loader/css-loader || styled-comps)
