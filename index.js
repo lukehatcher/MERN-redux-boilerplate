@@ -4,9 +4,9 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { App } from './src/components/App';
 import { store } from './src/store';
 import { fetchTodos } from './src/actions/todosActions';
+import { userId } from './src/constants/user';
 
-const userID = 'luke';
-store.dispatch(fetchTodos(userID));
+store.dispatch(fetchTodos(userId));
 
 ReactDOM.render(
   <ReduxProvider store={store}>

@@ -1,10 +1,13 @@
-const initialState = [];
+import { Todo } from '../interfaces/todo';
+import { TodoActionTypes } from '../constants/actionTypes';
 
-export function todosReducer(state = initialState, action): any[] {
+const initialState: Todo[] = [];
+
+export function todosReducer(state = initialState, action): Todo[] {
   switch (action.type) {
-    case 'loadTodos':
-      return action.payload; // full array of objects
-    case 'addTodo':
+    case TodoActionTypes.FETCH_TODOS:
+      return action.payload;
+    case TodoActionTypes.ADD_TODO:
       return [...state, action.payload];
     default:
       return state;

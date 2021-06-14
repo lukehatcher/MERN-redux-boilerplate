@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
+import styled from 'styled-components';
 import { RootState } from '../reducers/rootReducer';
 import { TodoItem } from './TodoItem';
-import styled from 'styled-components';
 import { TodoListProps } from '../interfaces/componentProps';
 
-const selectTodos = (state: RootState) => state.todos.map((todo) => todo.text);
-
 export const TodosList: FC<TodoListProps> = () => {
-  // const todoIds = useSelector(selectTodoIds, shallowEqual);
+  const selectTodos = (state: RootState) => state.todos.map((todo) => todo.text);
   const todos = useSelector(selectTodos, shallowEqual);
 
   return (
     <TodoListWrapper>
       <TodoListTitle>Todos</TodoListTitle>
       {todos.map((todo) => (
-        <TodoItem key={Math.random()} todo={todo}></TodoItem>
+        <TodoItemWrapper key={Math.random()}>
+          <TodoItem todo={todo}></TodoItem>
+        </TodoItemWrapper>
       ))}
     </TodoListWrapper>
   );
@@ -29,3 +29,5 @@ const TodoListWrapper = styled.div`
 const TodoListTitle = styled.h1`
   font-size: 20px;
 `;
+
+const TodoItemWrapper = styled.div``;

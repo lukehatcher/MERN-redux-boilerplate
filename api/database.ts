@@ -27,23 +27,13 @@ const ReduxBPSchema = new mongoose.Schema({
 
 const ReduxBPData = mongoose.model('reduxBPdata', ReduxBPSchema);
 
-// ========== db api functions ==========
+// ========== db controller functions ==========
 
-const initNewUser = async (data) => {
-  const doc = new ReduxBPData(data);
-  try {
-    await doc.save();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-// example seeding of db
-// initNewUser({
-//   userID: 'luke',
-//   todos: [{ id: 0, text: 'my todo1', completed: false },
-//     { id: 1, text: 'my todo2', completed: false }],
-// });
+interface newTodoObj {
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
 export const nextTodoId = (todos: any[]): number => {
   // helper function to find next id
@@ -53,12 +43,6 @@ export const nextTodoId = (todos: any[]): number => {
   }
   return max + 1;
 };
-
-interface newTodoObj {
-  id: number;
-  text: string;
-  completed: boolean;
-}
 
 export const addTodo = async (userID: string, text: string): Promise<newTodoObj> => {
   const doc: any = await ReduxBPData.findOne({ userID });
@@ -77,3 +61,21 @@ export const fetchTodos = async (userID: any): Promise<any> => {
     console.error(err);
   }
 };
+
+// ======== example of seeding db with a user ========
+
+// const initNewUser = async (data) => {
+//   const doc = new ReduxBPData(data);
+//   try {
+//     await doc.save();
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// example seeding of db
+// initNewUser({
+//   userID: 'luke',
+//   todos: [{ id: 0, text: 'my todo1', completed: false },
+//     { id: 1, text: 'my todo2', completed: false }],
+// });

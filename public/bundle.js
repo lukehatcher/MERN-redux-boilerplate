@@ -36343,8 +36343,8 @@ var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react
 var App_1 = __webpack_require__(/*! ./src/components/App */ "./src/components/App.tsx");
 var store_1 = __webpack_require__(/*! ./src/store */ "./src/store.ts");
 var todosActions_1 = __webpack_require__(/*! ./src/actions/todosActions */ "./src/actions/todosActions.ts");
-var userID = 'luke';
-store_1.store.dispatch(todosActions_1.fetchTodos(userID));
+var user_1 = __webpack_require__(/*! ./src/constants/user */ "./src/constants/user.ts");
+store_1.store.dispatch(todosActions_1.fetchTodos(user_1.userId));
 ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store_1.store },
     React.createElement(App_1.App, null)), document.getElementById('root'));
 
@@ -36401,6 +36401,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.saveNewTodo = exports.fetchTodos = void 0;
 var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+var actionTypes_1 = __webpack_require__(/*! ../constants/actionTypes */ "./src/constants/actionTypes.ts");
 var fetchTodos = function (userID) {
     return function (dispatch, _getState) { return __awaiter(void 0, void 0, void 0, function () {
         var response;
@@ -36409,7 +36410,7 @@ var fetchTodos = function (userID) {
                 case 0: return [4 /*yield*/, axios_1.default.get('/api/todos', { params: { userID: userID } })];
                 case 1:
                     response = _a.sent();
-                    dispatch({ type: 'loadTodos', payload: response.data });
+                    dispatch({ type: actionTypes_1.TodoActionTypes.FETCH_TODOS, payload: response.data });
                     return [2 /*return*/];
             }
         });
@@ -36424,7 +36425,7 @@ var saveNewTodo = function (userID, text) {
                 case 0: return [4 /*yield*/, axios_1.default.post('/api/todos', { userID: userID, text: text, type: 'add' })];
                 case 1:
                     response = _a.sent();
-                    dispatch({ type: 'addTodo', payload: response.data });
+                    dispatch({ type: actionTypes_1.TodoActionTypes.ADD_TODO, payload: response.data });
                     return [2 /*return*/];
             }
         });
@@ -36483,10 +36484,8 @@ exports.Footer = void 0;
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
-var selectTodo = function (state) { return state.todos.map(function (todo) { return todo.text; }); };
 var Footer = function () {
-    // this footer uses the same state as the TodosList component BUT...
-    // the parent App.jsx component does not rerender when this global todo state changes
+    var selectTodo = function (state) { return state.todos.map(function (todo) { return todo.text; }); };
     var todos = react_redux_1.useSelector(selectTodo, react_redux_1.shallowEqual);
     return (react_1.default.createElement(FooterContainer, null,
         react_1.default.createElement(FooterTitle, null, "Footer"),
@@ -36520,11 +36519,11 @@ exports.Form = void 0;
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_2 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var todosActions_1 = __webpack_require__(/*! ../actions/todosActions */ "./src/actions/todosActions.ts");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
+var todosActions_1 = __webpack_require__(/*! ../actions/todosActions */ "./src/actions/todosActions.ts");
 var Form = function () {
-    var _a = react_2.useState(''), textInput = _a[0], setTextInput = _a[1];
     var dispatch = react_redux_1.useDispatch();
+    var _a = react_2.useState(''), textInput = _a[0], setTextInput = _a[1];
     var handleTextChange = function (e) { return setTextInput(e.target.value); };
     var handleTextSubmit = function (e) {
         e.preventDefault();
@@ -36596,20 +36595,55 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TodosList = void 0;
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var TodoItem_1 = __webpack_require__(/*! ./TodoItem */ "./src/components/TodoItem.tsx");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
-var selectTodos = function (state) { return state.todos.map(function (todo) { return todo.text; }); };
+var TodoItem_1 = __webpack_require__(/*! ./TodoItem */ "./src/components/TodoItem.tsx");
 var TodosList = function () {
-    // const todoIds = useSelector(selectTodoIds, shallowEqual);
+    var selectTodos = function (state) { return state.todos.map(function (todo) { return todo.text; }); };
     var todos = react_redux_1.useSelector(selectTodos, react_redux_1.shallowEqual);
     return (react_1.default.createElement(TodoListWrapper, null,
         react_1.default.createElement(TodoListTitle, null, "Todos"),
-        todos.map(function (todo) { return (react_1.default.createElement(TodoItem_1.TodoItem, { key: Math.random(), todo: todo })); })));
+        todos.map(function (todo) { return (react_1.default.createElement(TodoItemWrapper, { key: Math.random() },
+            react_1.default.createElement(TodoItem_1.TodoItem, { todo: todo }))); })));
 };
 exports.TodosList = TodosList;
 var TodoListWrapper = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  border: 1px solid black;\n  margin: 15px;\n"], ["\n  border: 1px solid black;\n  margin: 15px;\n"])));
 var TodoListTitle = styled_components_1.default.h1(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  font-size: 20px;\n"], ["\n  font-size: 20px;\n"])));
-var templateObject_1, templateObject_2;
+var TodoItemWrapper = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject([""], [""])));
+var templateObject_1, templateObject_2, templateObject_3;
+
+
+/***/ }),
+
+/***/ "./src/constants/actionTypes.ts":
+/*!**************************************!*\
+  !*** ./src/constants/actionTypes.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TodoActionTypes = void 0;
+var TodoActionTypes;
+(function (TodoActionTypes) {
+    TodoActionTypes["FETCH_TODOS"] = "todos/fetch";
+    TodoActionTypes["ADD_TODO"] = "todos/add";
+})(TodoActionTypes = exports.TodoActionTypes || (exports.TodoActionTypes = {}));
+
+
+/***/ }),
+
+/***/ "./src/constants/user.ts":
+/*!*******************************!*\
+  !*** ./src/constants/user.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.userId = void 0;
+exports.userId = 'luke';
 
 
 /***/ }),
@@ -36623,12 +36657,12 @@ var templateObject_1, templateObject_2;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.rootReducer = void 0;
 var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 var todosReducer_1 = __webpack_require__(/*! ./todosReducer */ "./src/reducers/todosReducer.ts");
-var rootReducer = redux_1.combineReducers({
+exports.rootReducer = redux_1.combineReducers({
     todos: todosReducer_1.todosReducer,
 });
-exports.default = rootReducer;
 
 
 /***/ }),
@@ -36637,7 +36671,7 @@ exports.default = rootReducer;
 /*!**************************************!*\
   !*** ./src/reducers/todosReducer.ts ***!
   \**************************************/
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -36650,13 +36684,14 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.todosReducer = void 0;
+var actionTypes_1 = __webpack_require__(/*! ../constants/actionTypes */ "./src/constants/actionTypes.ts");
 var initialState = [];
 function todosReducer(state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
-        case 'loadTodos':
-            return action.payload; // full array of objects
-        case 'addTodo':
+        case actionTypes_1.TodoActionTypes.FETCH_TODOS:
+            return action.payload;
+        case actionTypes_1.TodoActionTypes.ADD_TODO:
             return __spreadArrays(state, [action.payload]);
         default:
             return state;
@@ -36683,9 +36718,9 @@ exports.store = void 0;
 var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 var redux_thunk_1 = __importDefault(__webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js"));
 var redux_devtools_extension_1 = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
-var rootReducer_1 = __importDefault(__webpack_require__(/*! ./reducers/rootReducer */ "./src/reducers/rootReducer.ts"));
+var rootReducer_1 = __webpack_require__(/*! ./reducers/rootReducer */ "./src/reducers/rootReducer.ts");
 var composedEnhancer = redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default));
-exports.store = redux_1.createStore(rootReducer_1.default, composedEnhancer);
+exports.store = redux_1.createStore(rootReducer_1.rootReducer, composedEnhancer);
 
 
 /***/ })

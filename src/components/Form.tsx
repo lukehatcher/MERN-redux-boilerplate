@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { saveNewTodo } from '../actions/todosActions';
 import styled from 'styled-components';
+import { saveNewTodo } from '../actions/todosActions';
 import { FormProps } from '../interfaces/componentProps';
 
 export const Form: FC<FormProps> = () => {
-  const [textInput, setTextInput] = useState('');
   const dispatch = useDispatch();
+  const [textInput, setTextInput] = useState('');
 
   const handleTextChange = (e) => setTextInput(e.target.value);
 
