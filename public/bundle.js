@@ -36443,36 +36443,20 @@ exports.saveNewTodo = saveNewTodo;
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.App = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var Form_1 = __webpack_require__(/*! ./Form */ "./src/components/Form.tsx");
 var TodosList_1 = __webpack_require__(/*! ./TodosList */ "./src/components/TodosList.tsx");
 var Footer_1 = __webpack_require__(/*! ./Footer */ "./src/components/Footer.tsx");
 var App = function () {
-    return (React.createElement("div", null,
-        React.createElement(Form_1.Form, null),
-        React.createElement(TodosList_1.TodosList, null),
-        React.createElement(Footer_1.Footer, null)));
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(Form_1.Form, null),
+        react_1.default.createElement(TodosList_1.TodosList, null),
+        react_1.default.createElement(Footer_1.Footer, null)));
 };
 exports.App = App;
 
@@ -36491,31 +36475,12 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Footer = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 var selectTodo = function (state) { return state.todos.map(function (todo) { return todo.text; }); };
@@ -36523,9 +36488,9 @@ var Footer = function () {
     // this footer uses the same state as the TodosList component BUT...
     // the parent App.jsx component does not rerender when this global todo state changes
     var todos = react_redux_1.useSelector(selectTodo, react_redux_1.shallowEqual);
-    return (React.createElement(FooterContainer, null,
-        React.createElement(FooterTitle, null, "Footer"),
-        todos.map(function (todo) { return (React.createElement("span", { key: Math.random() }, todo)); })));
+    return (react_1.default.createElement(FooterContainer, null,
+        react_1.default.createElement(FooterTitle, null, "Footer"),
+        todos.map(function (todo) { return (react_1.default.createElement("span", { key: Math.random() }, todo)); })));
 };
 exports.Footer = Footer;
 var FooterContainer = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  border: 1px solid black;\n"], ["\n  border: 1px solid black;\n"])));
@@ -36547,37 +36512,18 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Form = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_2 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 var todosActions_1 = __webpack_require__(/*! ../actions/todosActions */ "./src/actions/todosActions.ts");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 var Form = function () {
-    var _a = react_1.useState(''), textInput = _a[0], setTextInput = _a[1];
+    var _a = react_2.useState(''), textInput = _a[0], setTextInput = _a[1];
     var dispatch = react_redux_1.useDispatch();
     var handleTextChange = function (e) { return setTextInput(e.target.value); };
     var handleTextSubmit = function (e) {
@@ -36589,10 +36535,10 @@ var Form = function () {
         }
         setTextInput(''); // needed?
     };
-    return (React.createElement(FormContainer, null,
-        React.createElement("form", { onSubmit: handleTextSubmit },
-            React.createElement("input", { className: "text-input", placeholder: "What needs to be done?", value: textInput, type: "text", onChange: handleTextChange }),
-            React.createElement("button", { type: "submit" }, "submit"))));
+    return (react_1.default.createElement(FormContainer, null,
+        react_1.default.createElement("form", { onSubmit: handleTextSubmit },
+            react_1.default.createElement("input", { className: "text-input", placeholder: "What needs to be done?", value: textInput, type: "text", onChange: handleTextChange }),
+            react_1.default.createElement("button", { type: "submit" }, "submit"))));
 };
 exports.Form = Form;
 var FormContainer = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"])));
@@ -36643,31 +36589,12 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TodosList = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 var TodoItem_1 = __webpack_require__(/*! ./TodoItem */ "./src/components/TodoItem.tsx");
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
@@ -36675,9 +36602,9 @@ var selectTodos = function (state) { return state.todos.map(function (todo) { re
 var TodosList = function () {
     // const todoIds = useSelector(selectTodoIds, shallowEqual);
     var todos = react_redux_1.useSelector(selectTodos, react_redux_1.shallowEqual);
-    return (React.createElement(TodoListWrapper, null,
-        React.createElement(TodoListTitle, null, "Todos"),
-        todos.map(function (todo) { return (React.createElement(TodoItem_1.TodoItem, { key: Math.random(), todo: todo })); })));
+    return (react_1.default.createElement(TodoListWrapper, null,
+        react_1.default.createElement(TodoListTitle, null, "Todos"),
+        todos.map(function (todo) { return (react_1.default.createElement(TodoItem_1.TodoItem, { key: Math.random(), todo: todo })); })));
 };
 exports.TodosList = TodosList;
 var TodoListWrapper = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  border: 1px solid black;\n  margin: 15px;\n"], ["\n  border: 1px solid black;\n  margin: 15px;\n"])));

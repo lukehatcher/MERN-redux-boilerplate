@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { RootState } from '../reducers/rootReducer';
 import { TodoItem } from './TodoItem';
 import styled from 'styled-components';
+import { TodoListProps } from '../interfaces/componentProps';
 
 const selectTodos = (state: RootState) => state.todos.map((todo) => todo.text);
 
-export const TodosList: React.FC<any> = () => {
+export const TodosList: FC<TodoListProps> = () => {
   // const todoIds = useSelector(selectTodoIds, shallowEqual);
   const todos = useSelector(selectTodos, shallowEqual);
 

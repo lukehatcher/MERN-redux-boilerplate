@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { TodoItemProps } from '../interfaces/componentProps';
 
-interface TodoItemProps {
-  todo: string;
-}
-
-export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
+export const TodoItem: FC<TodoItemProps> = ({ todo }) => {
   return <TodoItemWrapper>{todo}</TodoItemWrapper>;
 };
 

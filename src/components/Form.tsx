@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { saveNewTodo } from '../actions/todosActions';
 import styled from 'styled-components';
+import { FormProps } from '../interfaces/componentProps';
 
-export const Form: React.FC<any> = () => {
+export const Form: FC<FormProps> = () => {
   const [textInput, setTextInput] = useState('');
   const dispatch = useDispatch();
 
