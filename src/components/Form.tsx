@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { saveNewTodo } from '../actions/todosActions';
-
-// import asyncThunkForTodoAddition from 'service1Thunk.js'
+import styled from 'styled-components';
 
 export const Form: React.FC<any> = () => {
   const [textInput, setTextInput] = useState('');
@@ -22,7 +21,7 @@ export const Form: React.FC<any> = () => {
   };
 
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={handleTextSubmit}>
         <input
           className="text-input"
@@ -33,6 +32,12 @@ export const Form: React.FC<any> = () => {
         />
         <button type="submit">submit</button>
       </form>
-    </div>
+    </FormContainer>
   );
-}
+};
+
+const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
