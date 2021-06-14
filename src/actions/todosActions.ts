@@ -1,5 +1,4 @@
 import axios from 'axios';
-// thunk action functions
 
 export function fetchTodos(userID) {
   return async function fetchTodosThunk(dispatch, getState) {

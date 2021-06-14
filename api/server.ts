@@ -1,5 +1,5 @@
-import * as express from 'express';
-import * as morgan from 'morgan';
+import express, { Request, Response } from 'express';
+import morgan from 'morgan';
 import * as db from './database';
 
 const PORT = 3000 || process.env.PORT;
@@ -13,7 +13,7 @@ app.listen(PORT, () => {
   console.log(`express server running on port ${PORT}`);
 });
 
-app.get('/api/todos', (req, res) => {
+app.get('/api/todos', (req: Request, res: Response) => {
   const { userID } = req.query;
   db.fetchTodos(userID)
     .then((todos) => res.send(todos))
@@ -23,7 +23,7 @@ app.get('/api/todos', (req, res) => {
     });
 });
 
-app.post('/api/todos', (req, res) => {
+app.post('/api/todos', (req: Request, res: Response) => {
   const { userID, type, text } = req.body;
   switch (type) {
     case 'add':

@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
+import { RootState } from '../reducers/rootReducer';
 
-// selector function
-// const selectTodoIds = (state) => state.todos.map((todo) => todo.id);
-const selectTodos = (state): string[] => state.todos.map((todo) => todo.text);
+const selectTodos = (state: RootState) => state.todos.map((todo) => todo.text);
 
 export const TodosList: React.FC<any> = () => {
   // const todoIds = useSelector(selectTodoIds, shallowEqual);
   const todos = useSelector(selectTodos, shallowEqual);
+  const type = useSelector((state: RootState) => state.todos);
+  console.log(type, 'asdf');
 
   return (
     <div>
-      {todos.map((todo) => <div key={Math.random()}>{todo}</div>)}
+      {todos.map((todo) => (
+        <div key={Math.random()}>{todo}</div>
+      ))}
     </div>
   );
-}
+};

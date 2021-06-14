@@ -1,13 +1,13 @@
+import mongoose from 'mongoose';
 
-import * as mongoose from 'mongoose';
-
-mongoose.connect(
-  'mongodb://localhost/MERN-redux-boilerplate',
-  {
+mongoose
+  .connect('mongodb://localhost/MERN-redux-boilerplate', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  },
-).catch((err) => { console.error(err); });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 const db = mongoose.connection;
 
@@ -55,10 +55,10 @@ export const nextTodoId = (todos: any[]): number => {
 };
 
 interface newTodoObj {
-  id: number,
-  text: string,
-  completed: boolean,
-};
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
 export const addTodo = async (userID: string, text: string): Promise<newTodoObj> => {
   const doc: any = await ReduxBPData.findOne({ userID });
@@ -68,7 +68,8 @@ export const addTodo = async (userID: string, text: string): Promise<newTodoObj>
   return obj;
 };
 
-export const fetchTodos = async (userID: any): Promise<any> => { // not actually any for the param
+export const fetchTodos = async (userID: any): Promise<any> => {
+  // not actually any for the param
   try {
     const doc: any = await ReduxBPData.findOne({ userID });
     return doc.todos;

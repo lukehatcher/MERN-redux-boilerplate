@@ -4,9 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/rootReducer';
 
 const composedEnhancer = composeWithDevTools(
-  applyMiddleware(thunkMiddleware),
+  applyMiddleware(thunkMiddleware)
   // other store enhancers if any
 );
 
-const store = createStore(rootReducer, composedEnhancer);
-export default store;
+export const store = createStore(rootReducer, composedEnhancer);
